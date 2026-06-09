@@ -1,0 +1,873 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Grant Zamudio — Financial Optimization Report 2024–2025</title>
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Inter:wght@300;400;500;600&display=swap');
+
+:root {
+  --bg: #f8f7f4;
+  --white: #ffffff;
+  --surface: #f2f0eb;
+  --border: #e4e0d8;
+  --green: #1a5c3a;
+  --green-mid: #2d7a52;
+  --green-light: #eaf4ee;
+  --green-accent: #4caf78;
+  --gold: #c9920a;
+  --gold-light: #fef9ed;
+  --red: #b83232;
+  --red-light: #fdf2f2;
+  --blue: #1e3a5f;
+  --blue-light: #edf3fb;
+  --orange: #c96a10;
+  --orange-light: #fef4eb;
+  --text: #1a1a1a;
+  --text-mid: #4a4a4a;
+  --muted: #888078;
+  --radius: 14px;
+  --shadow: 0 2px 16px rgba(0,0,0,0.06);
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; font-weight: 400; }
+
+/* ── HERO ── */
+.hero {
+  background: linear-gradient(135deg, #0e3d26 0%, #1a5c3a 50%, #0e3d26 100%);
+  color: white;
+  padding: 72px 48px 60px;
+  position: relative;
+  overflow: hidden;
+}
+.hero::after {
+  content: '';
+  position: absolute;
+  bottom: -1px; left: 0; right: 0;
+  height: 40px;
+  background: var(--bg);
+  clip-path: ellipse(55% 100% at 50% 100%);
+}
+.hero-eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; opacity: 0.55; margin-bottom: 18px; font-weight: 500; }
+.hero h1 { font-family: 'Playfair Display', serif; font-size: clamp(32px, 4.5vw, 56px); font-weight: 900; line-height: 1.05; margin-bottom: 18px; }
+.hero h1 em { color: #7dd9a8; font-style: normal; }
+.hero-sub { font-size: 15px; opacity: 0.7; max-width: 560px; line-height: 1.9; font-weight: 300; margin-bottom: 40px; }
+.hero-chips { display: flex; gap: 10px; flex-wrap: wrap; }
+.chip { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); border-radius: 100px; padding: 7px 16px; font-size: 12px; color: rgba(255,255,255,0.85); font-weight: 500; }
+.chip.accent { background: #7dd9a8; color: #0e3d26; border-color: transparent; }
+
+/* ── TOTALS BAR ── */
+.totals-bar {
+  background: var(--white);
+  border-bottom: 1px solid var(--border);
+  padding: 0 48px;
+  display: flex;
+  overflow-x: auto;
+  box-shadow: var(--shadow);
+}
+.total-item {
+  padding: 24px 32px 24px 0;
+  min-width: 160px;
+  border-right: 1px solid var(--border);
+  margin-right: 32px;
+  flex-shrink: 0;
+}
+.total-item:last-child { border-right: none; }
+.total-item .ti-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; font-weight: 600; }
+.total-item .ti-val { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; line-height: 1; margin-bottom: 4px; }
+.total-item .ti-sub { font-size: 11px; color: var(--muted); }
+.ti-green .ti-val { color: var(--green); }
+.ti-gold .ti-val { color: var(--gold); }
+.ti-red .ti-val { color: var(--red); }
+.ti-blue .ti-val { color: var(--blue); }
+
+/* ── NAV ── */
+.nav {
+  background: var(--white);
+  border-bottom: 2px solid var(--border);
+  padding: 0 48px;
+  display: flex;
+  overflow-x: auto;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.nav-btn {
+  padding: 16px 20px;
+  font-size: 12px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  margin-bottom: -2px;
+  color: var(--muted);
+  white-space: nowrap;
+  transition: all 0.2s;
+  font-weight: 600;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  font-family: 'Inter', sans-serif;
+}
+.nav-btn.active { color: var(--green); border-bottom-color: var(--green); }
+.nav-btn:hover { color: var(--text); }
+
+/* ── SECTIONS ── */
+.section { display: none; }
+.section.visible { display: block; }
+.content { max-width: 1040px; margin: 0 auto; padding: 52px 48px; }
+
+/* ── TYPOGRAPHY ── */
+.eyebrow { font-size: 10px; letter-spacing: 3px; text-transform: uppercase; color: var(--green); font-weight: 700; margin-bottom: 6px; display: block; margin-top: 52px; }
+.eyebrow:first-child { margin-top: 0; }
+.section-title { font-family: 'Playfair Display', serif; font-size: 28px; font-weight: 700; margin-bottom: 10px; line-height: 1.2; }
+.section-desc { font-size: 14px; color: var(--text-mid); line-height: 1.85; margin-bottom: 32px; max-width: 680px; font-weight: 300; }
+.divider { height: 1px; background: var(--border); margin: 44px 0; }
+
+/* ── STAT GRID ── */
+.stat-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 16px; margin-bottom: 36px; }
+.stat-card {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 24px;
+  box-shadow: var(--shadow);
+  position: relative;
+  overflow: hidden;
+}
+.stat-card::after { content: ''; position: absolute; top: 0; left: 0; right: 0; height: 3px; }
+.stat-card.g::after { background: var(--green); }
+.stat-card.go::after { background: var(--gold); }
+.stat-card.r::after { background: var(--red); }
+.stat-card.b::after { background: var(--blue); }
+.stat-card.o::after { background: var(--orange); }
+.sc-label { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); font-weight: 700; margin-bottom: 10px; display: block; }
+.sc-val { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 700; line-height: 1; margin-bottom: 6px; }
+.sc-val.g { color: var(--green); }
+.sc-val.go { color: var(--gold); }
+.sc-val.r { color: var(--red); }
+.sc-val.b { color: var(--blue); }
+.sc-val.o { color: var(--orange); }
+.sc-desc { font-size: 12px; color: var(--muted); line-height: 1.6; }
+
+/* ── TABLE ── */
+.tbl-wrap { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); overflow: hidden; box-shadow: var(--shadow); margin-bottom: 24px; }
+.tbl { width: 100%; border-collapse: collapse; font-size: 13px; }
+.tbl th { font-size: 10px; letter-spacing: 2px; text-transform: uppercase; color: var(--muted); padding: 12px 20px; text-align: left; background: var(--surface); font-weight: 700; border-bottom: 1px solid var(--border); }
+.tbl td { padding: 11px 20px; border-bottom: 1px solid var(--border); color: var(--text-mid); }
+.tbl tr:last-child td { border-bottom: none; }
+.tbl tr:hover td { background: #fafaf8; }
+.tbl .amt { text-align: right; font-weight: 600; color: var(--text); font-variant-numeric: tabular-nums; }
+.tbl .mo { text-align: right; color: var(--muted); font-size: 11px; }
+.tbl .cat { background: var(--green-light) !important; }
+.tbl .cat td { font-size: 11px; letter-spacing: 1px; text-transform: uppercase; color: var(--green); font-weight: 700; padding: 9px 20px; }
+.tbl .sub td { font-weight: 700; background: var(--surface) !important; color: var(--text); }
+.tbl .grand td { background: var(--green) !important; color: white !important; font-weight: 700; font-size: 14px; }
+.tbl .grand .amt { color: white !important; }
+
+/* ── FLAGS ── */
+.flag-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; margin-bottom: 28px; }
+.flag {
+  border-radius: var(--radius);
+  padding: 20px 22px;
+  display: flex;
+  gap: 14px;
+  align-items: flex-start;
+  box-shadow: var(--shadow);
+}
+.flag.red { background: var(--red-light); border: 1px solid #f0c8c8; }
+.flag.gold { background: var(--gold-light); border: 1px solid #f0dfa0; }
+.flag.green { background: var(--green-light); border: 1px solid #b8dfc8; }
+.flag.blue { background: var(--blue-light); border: 1px solid #b8d4f0; }
+.flag-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
+.flag h4 { font-size: 13px; font-weight: 700; margin-bottom: 5px; }
+.flag.red h4 { color: var(--red); }
+.flag.gold h4 { color: var(--gold); }
+.flag.green h4 { color: var(--green); }
+.flag.blue h4 { color: var(--blue); }
+.flag p { font-size: 12px; color: var(--text-mid); line-height: 1.7; }
+.flag strong { color: var(--text); }
+
+/* ── RECOMMENDATIONS ── */
+.rec-list { display: flex; flex-direction: column; gap: 14px; margin-bottom: 28px; }
+.rec {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  padding: 22px 24px;
+  display: grid;
+  grid-template-columns: 44px 1fr auto;
+  gap: 18px;
+  align-items: start;
+  box-shadow: var(--shadow);
+  transition: border-color 0.2s, transform 0.15s;
+}
+.rec:hover { border-color: var(--green-accent); transform: translateY(-2px); }
+.rec-num {
+  width: 44px; height: 44px;
+  border-radius: 50%;
+  background: var(--green);
+  color: white;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+.rec.priority-high .rec-num { background: var(--red); }
+.rec.priority-med .rec-num { background: var(--gold); }
+.rec.priority-low .rec-num { background: var(--blue); }
+.rec-body h4 { font-size: 15px; font-weight: 700; margin-bottom: 5px; color: var(--text); }
+.rec-body p { font-size: 13px; color: var(--text-mid); line-height: 1.75; }
+.rec-body .rec-tags { display: flex; gap: 6px; flex-wrap: wrap; margin-top: 10px; }
+.rec-tag { font-size: 10px; padding: 3px 9px; border-radius: 100px; font-weight: 600; letter-spacing: 0.5px; }
+.tag-action { background: var(--green-light); color: var(--green); }
+.tag-easy { background: #e8f8f0; color: #1a7a46; }
+.tag-savings { background: var(--gold-light); color: var(--gold); }
+.tag-flag { background: var(--red-light); color: var(--red); }
+.rec-save {
+  background: var(--green-light);
+  color: var(--green);
+  border: 1px solid #b8dfc8;
+  padding: 8px 14px;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+  height: fit-content;
+  min-width: 130px;
+}
+.rec-save .sv { font-family: 'Playfair Display', serif; font-size: 18px; font-weight: 700; display: block; line-height: 1.1; }
+.rec-save .sl { font-size: 10px; letter-spacing: 1px; text-transform: uppercase; margin-top: 2px; opacity: 0.75; }
+
+/* ── VERDICT ── */
+.verdict {
+  background: linear-gradient(135deg, #0e3d26 0%, #1a5c3a 100%);
+  color: white;
+  border-radius: var(--radius);
+  padding: 48px;
+  margin-top: 8px;
+  box-shadow: 0 8px 32px rgba(26,92,58,0.25);
+}
+.verdict-eyebrow { font-size: 11px; letter-spacing: 3px; text-transform: uppercase; opacity: 0.55; margin-bottom: 14px; font-weight: 600; }
+.verdict h3 { font-family: 'Playfair Display', serif; font-size: 32px; font-weight: 900; margin-bottom: 16px; line-height: 1.1; }
+.verdict h3 em { color: #7dd9a8; font-style: normal; }
+.verdict p { font-size: 14px; opacity: 0.8; line-height: 1.85; max-width: 680px; margin-bottom: 36px; font-weight: 300; }
+.verdict-boxes { display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 14px; }
+.vbox { background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.15); border-radius: 10px; padding: 20px 16px; text-align: center; }
+.vbox .vv { font-family: 'Playfair Display', serif; font-size: 26px; font-weight: 700; color: #7dd9a8; display: block; line-height: 1; margin-bottom: 6px; }
+.vbox .vl { font-size: 10px; letter-spacing: 1.5px; text-transform: uppercase; opacity: 0.6; }
+
+/* ── NOTE ── */
+.note { background: var(--gold-light); border-left: 3px solid var(--gold); border-radius: 0 10px 10px 0; padding: 14px 18px; font-size: 13px; color: var(--text-mid); line-height: 1.75; margin-bottom: 24px; }
+.note strong { color: var(--text); font-weight: 700; }
+
+/* ── DONUT CHART ── */
+.chart-row { display: grid; grid-template-columns: 1fr 1fr; gap: 24px; margin-bottom: 32px; }
+.chart-card { background: var(--white); border: 1px solid var(--border); border-radius: var(--radius); padding: 28px; box-shadow: var(--shadow); }
+.chart-title { font-family: 'Playfair Display', serif; font-size: 16px; font-weight: 700; margin-bottom: 20px; }
+.bar-item { margin-bottom: 14px; }
+.bar-label { display: flex; justify-content: space-between; font-size: 12px; margin-bottom: 5px; font-weight: 500; }
+.bar-label span:last-child { color: var(--muted); font-weight: 400; }
+.bar-track { height: 8px; background: var(--surface); border-radius: 100px; overflow: hidden; }
+.bar-fill { height: 100%; border-radius: 100px; }
+.bar-green { background: var(--green); }
+.bar-gold { background: var(--gold); }
+.bar-red { background: var(--red); }
+.bar-blue { background: var(--blue); }
+.bar-orange { background: var(--orange); }
+.bar-teal { background: #1a7a7a; }
+
+@media (max-width: 700px) {
+  .hero, .content { padding: 36px 20px; }
+  .totals-bar, .nav { padding: 0 20px; }
+  .chart-row { grid-template-columns: 1fr; }
+  .rec { grid-template-columns: 44px 1fr; }
+  .rec-save { grid-column: 1/-1; text-align: left; }
+  .verdict { padding: 32px 24px; }
+}
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<div class="hero">
+  <div class="hero-eyebrow">Grant Zamudio · Financial Optimization · June 2026</div>
+  <h1>Where Your Money Goes<br>&amp; <em>How to Keep More of It</em></h1>
+  <div class="hero-sub">A full analysis of 2024–2025 spending across personal and business accounts — travel, subscriptions, and recurring charges — with ranked recommendations to reduce costs without changing your lifestyle.</div>
+  <div class="hero-chips">
+    <span class="chip accent">$195K+ Analyzed</span>
+    <span class="chip">Travel · Subscriptions · Recurring</span>
+    <span class="chip">2024–2025 Data</span>
+    <span class="chip">Grant & Shelby + Brown Tree</span>
+  </div>
+</div>
+
+<!-- TOTALS BAR -->
+<div class="totals-bar">
+  <div class="total-item ti-green">
+    <div class="ti-label">Total Travel (2 yrs)</div>
+    <div class="ti-val">$64,189</div>
+    <div class="ti-sub">~$32,094/year</div>
+  </div>
+  <div class="total-item ti-blue">
+    <div class="ti-label">Total Subscriptions (2 yrs)</div>
+    <div class="ti-val">$131,588</div>
+    <div class="ti-sub">~$65,794/year</div>
+  </div>
+  <div class="total-item ti-red">
+    <div class="ti-label">Uber + Lyft (2 yrs)</div>
+    <div class="ti-val">$8,814</div>
+    <div class="ti-sub">~$4,407/year</div>
+  </div>
+  <div class="total-item ti-gold">
+    <div class="ti-label">Combined Total (2 yrs)</div>
+    <div class="ti-val">$204,591</div>
+    <div class="ti-sub">~$102,295/year</div>
+  </div>
+  <div class="total-item ti-green">
+    <div class="ti-label">Estimated Annual Savings</div>
+    <div class="ti-val">$18–25K</div>
+    <div class="ti-sub">Across all recommendations</div>
+  </div>
+</div>
+
+<!-- NAV -->
+<div class="nav">
+  <button class="nav-btn active" onclick="show('overview', this)">📊 Overview</button>
+  <button class="nav-btn" onclick="show('travel', this)">✈️ Travel</button>
+  <button class="nav-btn" onclick="show('subscriptions', this)">📱 Subscriptions</button>
+  <button class="nav-btn" onclick="show('transport', this)">🚗 Uber & Lyft</button>
+  <button class="nav-btn" onclick="show('flags', this)">⚠️ Flags</button>
+  <button class="nav-btn" onclick="show('recommendations', this)">💡 Action Plan</button>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- OVERVIEW -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="section visible" id="overview">
+<div class="content">
+
+  <span class="eyebrow">The Big Picture</span>
+  <div class="section-title">Where the Money Is Going</div>
+  <div class="section-desc">Across personal and business accounts, Grant spends approximately $102,295/year on tracked recurring and travel-related expenses. Here's how it breaks down — and where the biggest savings opportunities are hiding.</div>
+
+  <div class="chart-row">
+    <div class="chart-card">
+      <div class="chart-title">Personal Spend Breakdown (Annual)</div>
+      <div class="bar-item">
+        <div class="bar-label"><span>🎓 Education & Kids</span><span>$18,703/yr</span></div>
+        <div class="bar-track"><div class="bar-fill bar-blue" style="width:100%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>🏋️ Health & Fitness</span><span>$12,697/yr</span></div>
+        <div class="bar-track"><div class="bar-fill bar-green" style="width:68%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>✈️ Travel (personal)</span><span>$18,382/yr</span></div>
+        <div class="bar-track"><div class="bar-fill bar-gold" style="width:98%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>🏠 Home Services</span><span>$4,263/yr</span></div>
+        <div class="bar-track"><div class="bar-fill bar-teal" style="width:23%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>🛡️ Insurance & Financial</span><span>$3,173/yr</span></div>
+        <div class="bar-track"><div class="bar-fill bar-orange" style="width:17%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>📺 Streaming & Media</span><span>$2,862/yr</span></div>
+        <div class="bar-track"><div class="bar-fill bar-red" style="width:15%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>🛵 Food Delivery</span><span>$1,296/yr</span></div>
+        <div class="bar-track"><div class="bar-fill bar-red" style="width:7%"></div></div>
+      </div>
+    </div>
+
+    <div class="chart-card">
+      <div class="chart-title">Business Spend Breakdown (Annual)</div>
+      <div class="bar-item">
+        <div class="bar-label"><span>👔 Professional Services</span><span>$15,643/yr</span></div>
+        <div class="bar-track"><div class="bar-fill bar-blue" style="width:100%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>✈️ Travel (business)</span><span>$13,711/yr</span></div>
+        <div class="bar-track"><div class="bar-fill bar-green" style="width:88%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>🚗 Uber & Lyft</span><span>$3,135/yr</span></div>
+        <div class="bar-track"><div class="bar-fill bar-gold" style="width:20%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>💻 Software & SaaS</span><span>$3,400/yr</span></div>
+        <div class="bar-track"><div class="bar-fill bar-teal" style="width:22%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>📡 Telecom & Internet</span><span>$1,494/yr</span></div>
+        <div class="bar-track"><div class="bar-fill bar-orange" style="width:10%"></div></div>
+      </div>
+      <div class="bar-item">
+        <div class="bar-label"><span>📰 Media & Learning</span><span>$694/yr</span></div>
+        <div class="bar-track"><div class="bar-fill bar-red" style="width:4%"></div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="note">
+    <strong>Key insight:</strong> The single biggest savings opportunity is the <strong>travel agent certification</strong> ($299/yr via Fora) which could save $7,279–$11,165/year on hotels Grant already books. The second biggest is <strong>resolving potential duplicate subscriptions</strong> (AG1, Sirius, Disney, Doordash) which could save $858–$2,500/year with a few phone calls.
+  </div>
+
+  <!-- Quick wins -->
+  <span class="eyebrow">Top 3 Moves to Make This Month</span>
+  <div class="section-title">Quick Wins</div>
+  <div class="flag-grid">
+    <div class="flag green">
+      <div class="flag-icon">🏆</div>
+      <div>
+        <h4>Sign Up for Fora Travel Agent</h4>
+        <p>$299/year unlocks 20–35% off at every major hotel chain. <strong>Estimated savings: $7,279–$11,165/year.</strong> 25–37x ROI. Daniel can handle the signup and California registration.</p>
+      </div>
+    </div>
+    <div class="flag red">
+      <div class="flag-icon">🚨</div>
+      <div>
+        <h4>Fix AG1 Duplicate Billing</h4>
+        <p>AG1 appears in both personal ($1,030) and business ($687) accounts. <strong>Possible duplicate: $858/year.</strong> One 10-minute call to AG1 to verify and cancel one subscription.</p>
+      </div>
+    </div>
+    <div class="flag gold">
+      <div class="flag-icon">⚡</div>
+      <div>
+        <h4>Audit Miro.com Usage</h4>
+        <p>$1,999 over 2 years ($83/month). If not actively used, downgrade to free tier. <strong>Potential saving: $600–$1,000/year.</strong> Takes 5 minutes to check usage.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- TRAVEL -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="section" id="travel">
+<div class="content">
+
+  <span class="eyebrow">Section 01 — Travel Analysis</span>
+  <div class="section-title">Travel Spending 2024–2025</div>
+  <div class="section-desc">$64,189 spent on travel across personal and business accounts over two years — approximately $32,094/year. Hotels represent the largest single opportunity for savings.</div>
+
+  <div class="stat-grid">
+    <div class="stat-card g"><span class="sc-label">Personal Travel (2 yrs)</span><div class="sc-val g">$36,765</div><div class="sc-desc">Grant & Shelby account</div></div>
+    <div class="stat-card b"><span class="sc-label">Business Travel (2 yrs)</span><div class="sc-val b">$27,423</div><div class="sc-desc">Brown Tree, Inc.</div></div>
+    <div class="stat-card go"><span class="sc-label">Hotels Only (2 yrs)</span><div class="sc-val go">$25,911</div><div class="sc-desc">Biggest savings target</div></div>
+    <div class="stat-card g"><span class="sc-label">Est. Annual Savings (Fora)</span><div class="sc-val g">$7,279–$11,165</div><div class="sc-desc">After $299 cert cost</div></div>
+  </div>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Vendor</th><th>Account</th><th class="amt">2-Year Total</th><th class="mo">Annual Avg</th></tr></thead>
+      <tbody>
+        <tr class="cat"><td colspan="4">✈️ Flights</td></tr>
+        <tr><td>United Airlines</td><td>Both</td><td class="amt">$12,081</td><td class="mo">$6,040/yr</td></tr>
+        <tr><td>Southwest Airlines</td><td>Both</td><td class="amt">$4,484</td><td class="mo">$2,242/yr</td></tr>
+        <tr><td>Alaska Air</td><td>Both</td><td class="amt">$5,049</td><td class="mo">$2,525/yr</td></tr>
+        <tr><td>Delta / Spirit</td><td>Business / Personal</td><td class="amt">$792</td><td class="mo">$396/yr</td></tr>
+        <tr class="sub"><td colspan="2">Flights Subtotal</td><td class="amt">$22,406</td><td class="mo">$11,203/yr</td></tr>
+        <tr class="cat"><td colspan="4">🏨 Hotels & Lodging</td></tr>
+        <tr><td>Rosewood / Edgewood Tahoe / Two Casitas</td><td>Personal</td><td class="amt">$13,855</td><td class="mo">$6,927/yr</td></tr>
+        <tr><td>WDTC Resort / Bear Valley / AirBnB / Elan</td><td>Personal</td><td class="amt">$4,756</td><td class="mo">$2,378/yr</td></tr>
+        <tr><td>Business Hotels (Marriott, Hyatt, Le Meridien, Hoxton, etc.)</td><td>Business</td><td class="amt">$7,300</td><td class="mo">$3,650/yr</td></tr>
+        <tr class="sub"><td colspan="2">Hotels Subtotal</td><td class="amt">$25,911</td><td class="mo">$12,955/yr</td></tr>
+        <tr class="cat"><td colspan="4">🚗 Ground Transport & Activities</td></tr>
+        <tr><td>Perfect Transport / Turo / Airports</td><td>Personal</td><td class="amt">$3,585</td><td class="mo">$1,793/yr</td></tr>
+        <tr><td>Uber / Lyft (see Transport tab)</td><td>Both</td><td class="amt">$8,814</td><td class="mo">$4,407/yr</td></tr>
+        <tr><td>Cabo Golf / Bear Valley / Tahoe / Yellowstone</td><td>Personal</td><td class="amt">$3,071</td><td class="mo">$1,535/yr</td></tr>
+        <tr class="grand"><td colspan="2">TOTAL TRAVEL</td><td class="amt">$64,189</td><td class="mo">$32,094/yr</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <div class="note"><strong>Travel Agent ROI:</strong> Hotels represent $12,955/year. A Fora travel agent card ($299/yr) delivers 20–35% off every hotel stay — saving $2,591–$4,534 on hotels alone, plus additional savings on flights and activities. Total ROI: <strong>25–37x the certification cost.</strong></div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SUBSCRIPTIONS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="section" id="subscriptions">
+<div class="content">
+
+  <span class="eyebrow">Section 02 — Subscriptions</span>
+  <div class="section-title">Subscriptions & Recurring Charges</div>
+  <div class="section-desc">$131,588 in tracked recurring expenses over two years — $65,794/year. This is the single largest spending category across both accounts.</div>
+
+  <div class="stat-grid">
+    <div class="stat-card r"><span class="sc-label">Personal Recurring (2 yrs)</span><div class="sc-val r">$85,993</div><div class="sc-desc">$42,996/year avg</div></div>
+    <div class="stat-card b"><span class="sc-label">Business Recurring (2 yrs)</span><div class="sc-val b">$45,595</div><div class="sc-desc">$22,797/year avg</div></div>
+    <div class="stat-card go"><span class="sc-label">Combined Annual</span><div class="sc-val go">$65,794</div><div class="sc-desc">Total recurring/year</div></div>
+    <div class="stat-card g"><span class="sc-label">Potential Annual Savings</span><div class="sc-val g">$3,000–$5,000</div><div class="sc-desc">From audits & duplicates</div></div>
+  </div>
+
+  <span class="eyebrow">Personal — Grant & Shelby</span>
+  <div class="section-title" style="font-size:20px">Personal Subscriptions ($42,996/yr)</div>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Service</th><th>Notes</th><th class="amt">2-Year Total</th><th class="mo">Monthly</th></tr></thead>
+      <tbody>
+        <tr class="cat"><td colspan="4">🎓 Education & Kids — $37,407</td></tr>
+        <tr><td>LGSONS Nursery School</td><td>Recurring tuition</td><td class="amt">$15,811</td><td class="mo">$659/mo</td></tr>
+        <tr><td>TADS (tuition payments)</td><td>School tuition platform</td><td class="amt">$10,795</td><td class="mo">$450/mo</td></tr>
+        <tr><td>Cristo Rey Jesuit High School</td><td>Tuition</td><td class="amt">$6,180</td><td class="mo">$258/mo</td></tr>
+        <tr><td>My Little Conservatory</td><td>Music lessons</td><td class="amt">$2,662</td><td class="mo">$111/mo</td></tr>
+        <tr><td>LGS Recreation</td><td>Sports & activities</td><td class="amt">$1,383</td><td class="mo">$58/mo</td></tr>
+        <tr><td>Little Gym</td><td>Kids gym</td><td class="amt">$576</td><td class="mo">$24/mo</td></tr>
+        <tr class="cat"><td colspan="4">🏋️ Health & Fitness — $25,395</td></tr>
+        <tr><td>Bay Club</td><td>Family membership — largest personal recurring expense</td><td class="amt">$22,343</td><td class="mo">$931/mo</td></tr>
+        <tr><td>Athletic Greens (AG1)</td><td>⚠️ Also in business account</td><td class="amt">$1,031</td><td class="mo">$43/mo</td></tr>
+        <tr><td>Drink LMNT</td><td>Electrolyte subscription</td><td class="amt">$1,008</td><td class="mo">$42/mo</td></tr>
+        <tr><td>Soulcycle</td><td>Cycling classes</td><td class="amt">$663</td><td class="mo">$28/mo</td></tr>
+        <tr><td>Osteostrong</td><td>Bone health program</td><td class="amt">$219</td><td class="mo">$9/mo</td></tr>
+        <tr><td>Peloton</td><td>App subscription</td><td class="amt">$132</td><td class="mo">$6/mo</td></tr>
+        <tr class="cat"><td colspan="4">🏠 Home Services — $8,527</td></tr>
+        <tr><td>Sky Blue Pools</td><td>Pool maintenance</td><td class="amt">$5,370</td><td class="mo">$224/mo</td></tr>
+        <tr><td>Bedollas Gardening</td><td>Landscaping</td><td class="amt">$1,800</td><td class="mo">$75/mo</td></tr>
+        <tr><td>Classic Car Wash</td><td>Monthly membership</td><td class="amt">$1,291</td><td class="mo">$54/mo</td></tr>
+        <tr><td>ProPest + Waste Connection</td><td>Pest control + trash</td><td class="amt">$66</td><td class="mo">$3/mo</td></tr>
+        <tr class="cat"><td colspan="4">🛡️ Insurance & Financial — $6,347</td></tr>
+        <tr><td>Northwestern Mutual</td><td>Life / financial</td><td class="amt">$2,790</td><td class="mo">$116/mo</td></tr>
+        <tr><td>RLI Insurance Policy</td><td>Umbrella insurance</td><td class="amt">$2,028</td><td class="mo">$84/mo</td></tr>
+        <tr><td>Jewelers Mutual</td><td>Jewelry insurance</td><td class="amt">$754</td><td class="mo">$31/mo</td></tr>
+        <tr><td>Hagerty</td><td>Classic car insurance</td><td class="amt">$510</td><td class="mo">$21/mo</td></tr>
+        <tr><td>Wealthfront + Travel Guard</td><td>Investment + travel ins.</td><td class="amt">$264</td><td class="mo">$11/mo</td></tr>
+        <tr class="cat"><td colspan="4">📺 Streaming & Media — $5,725</td></tr>
+        <tr><td>Disney</td><td>⚠️ Also in business; mix of streaming + park visits</td><td class="amt">$2,565</td><td class="mo">$107/mo</td></tr>
+        <tr><td>Apple</td><td>Mix of hardware + iCloud/subscriptions</td><td class="amt">$2,129</td><td class="mo">$89/mo</td></tr>
+        <tr><td>Spotify</td><td>Music streaming</td><td class="amt">$462</td><td class="mo">$19/mo</td></tr>
+        <tr><td>Sirius XM</td><td>⚠️ Also in business account</td><td class="amt">$231</td><td class="mo">$10/mo</td></tr>
+        <tr><td>Netflix + Blinkist + Google</td><td>Streaming + reading</td><td class="amt">$338</td><td class="mo">$14/mo</td></tr>
+        <tr class="cat"><td colspan="4">🛵 Food Delivery — $2,593</td></tr>
+        <tr><td>Doordash</td><td>⚠️ Also in business account ($2,526)</td><td class="amt">$2,561</td><td class="mo">$107/mo</td></tr>
+        <tr><td>Grubhub</td><td></td><td class="amt">$32</td><td class="mo">$1/mo</td></tr>
+        <tr class="grand"><td colspan="2">PERSONAL TOTAL (2 years)</td><td class="amt">$85,993</td><td class="mo">$42,996/yr</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+  <span class="eyebrow">Business — Brown Tree, Inc.</span>
+  <div class="section-title" style="font-size:20px">Business Subscriptions ($22,797/yr)</div>
+
+  <div class="tbl-wrap">
+    <table class="tbl">
+      <thead><tr><th>Service</th><th>Notes</th><th class="amt">2-Year Total</th><th class="mo">Monthly</th></tr></thead>
+      <tbody>
+        <tr class="cat"><td colspan="4">👔 Professional Services — $31,287</td></tr>
+        <tr><td>Brass Ring Admin Solutions</td><td>Admin support services</td><td class="amt">$17,287</td><td class="mo">$720/mo</td></tr>
+        <tr><td>Strategic Coach</td><td>Business coaching program</td><td class="amt">$14,000</td><td class="mo">$583/mo</td></tr>
+        <tr class="cat"><td colspan="4">💻 Software & SaaS — $6,801</td></tr>
+        <tr><td>QuickBooks</td><td>Accounting software</td><td class="amt">$2,282</td><td class="mo">$95/mo</td></tr>
+        <tr><td>Miro.com</td><td>⚠️ Verify active usage — $83/mo</td><td class="amt">$2,000</td><td class="mo">$83/mo</td></tr>
+        <tr><td>Wix.com</td><td>Website hosting</td><td class="amt">$696</td><td class="mo">$29/mo</td></tr>
+        <tr><td>Adobe</td><td>Creative suite</td><td class="amt">$480</td><td class="mo">$20/mo</td></tr>
+        <tr><td>Box + Smartsheet</td><td>Cloud storage + project mgmt</td><td class="amt">$720</td><td class="mo">$30/mo</td></tr>
+        <tr><td>Grammarly + OpenAI + Others</td><td>Writing + AI tools</td><td class="amt">$623</td><td class="mo">$26/mo</td></tr>
+        <tr class="cat"><td colspan="4">📡 Telecom & Internet — $2,988</td></tr>
+        <tr><td>Comcast</td><td>Business internet — worth reviewing plan</td><td class="amt">$2,381</td><td class="mo">$99/mo</td></tr>
+        <tr><td>Verizon</td><td>Phone / data</td><td class="amt">$578</td><td class="mo">$24/mo</td></tr>
+        <tr><td>Starlink</td><td>Minimal usage — confirm active</td><td class="amt">$22</td><td class="mo">$1/mo</td></tr>
+        <tr class="cat"><td colspan="4">📰 Media & Learning — $1,390</td></tr>
+        <tr><td>NY Times</td><td>Digital subscription</td><td class="amt">$631</td><td class="mo">$26/mo</td></tr>
+        <tr><td>Audible</td><td>Audiobooks</td><td class="amt">$359</td><td class="mo">$15/mo</td></tr>
+        <tr><td>Mercury News + WSJ</td><td>Local + financial news</td><td class="amt">$400</td><td class="mo">$17/mo</td></tr>
+        <tr class="cat"><td colspan="4">🏋️ Health + Other — $2,291</td></tr>
+        <tr><td>Bay Club Boulder Ridge</td><td>⚠️ Separate from personal Bay Club?</td><td class="amt">$1,458</td><td class="mo">$61/mo</td></tr>
+        <tr><td>AG1 (Athletic Greens)</td><td>⚠️ Also in personal account</td><td class="amt">$687</td><td class="mo">$29/mo</td></tr>
+        <tr><td>Sirius XM</td><td>⚠️ Also in personal account</td><td class="amt">$146</td><td class="mo">$6/mo</td></tr>
+        <tr class="grand"><td colspan="2">BUSINESS TOTAL (2 years)</td><td class="amt">$45,595</td><td class="mo">$22,797/yr</td></tr>
+      </tbody>
+    </table>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- TRANSPORT -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="section" id="transport">
+<div class="content">
+
+  <span class="eyebrow">Section 03 — Uber & Lyft</span>
+  <div class="section-title">Rideshare Deep Dive</div>
+  <div class="section-desc">$8,814 on Uber and Lyft over two years across both accounts. Modest subscription programs deliver real savings at current usage levels.</div>
+
+  <div class="stat-grid">
+    <div class="stat-card b"><span class="sc-label">Uber — Personal</span><div class="sc-val b">$2,544</div><div class="sc-desc">$1,272/year</div></div>
+    <div class="stat-card b"><span class="sc-label">Uber — Business</span><div class="sc-val b">$2,719</div><div class="sc-desc">$1,359/year</div></div>
+    <div class="stat-card r"><span class="sc-label">Lyft — Business</span><div class="sc-val r">$3,551</div><div class="sc-desc">$1,775/year — largest</div></div>
+    <div class="stat-card go"><span class="sc-label">Combined Annual</span><div class="sc-val go">$4,407</div><div class="sc-desc">$8,814 over 2 years</div></div>
+  </div>
+
+  <div class="flag-grid">
+    <div class="flag green">
+      <div class="flag-icon">✅</div>
+      <div>
+        <h4>Uber One — $9.99/month ($120/yr)</h4>
+        <p>5–10% off every Uber ride. Combined Uber spend: <strong>$2,631/year.</strong> At 7.5% savings: <strong>$197 saved/year.</strong> Net after subscription: <strong>+$77/year.</strong></p>
+      </div>
+    </div>
+    <div class="flag green">
+      <div class="flag-icon">✅</div>
+      <div>
+        <h4>Lyft Pink — $199/year</h4>
+        <p>15% off all Lyft rides. Business Lyft spend: <strong>$1,775/year.</strong> At 15%: <strong>$266 saved/year.</strong> Net after subscription: <strong>+$67/year.</strong></p>
+      </div>
+    </div>
+    <div class="flag blue">
+      <div class="flag-icon">⚡</div>
+      <div>
+        <h4>Waymo — Already in Data</h4>
+        <p>A $13.79 Waymo charge appears in the business account. Waymo is often cheaper in Bay Area. <strong>Routing Bay Area rides through Waymo first could save 10–15% on the total rideshare bill.</strong></p>
+      </div>
+    </div>
+    <div class="flag gold">
+      <div class="flag-icon">🔍</div>
+      <div>
+        <h4>Why Lyft on Business, Uber on Personal?</h4>
+        <p>Lyft ($3,551) and Uber ($2,719) are split across business and personal with no apparent pattern. <strong>Consolidating to one platform</strong> unlocks better subscription rates and simplifies expense tracking.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- FLAGS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="section" id="flags">
+<div class="content">
+
+  <span class="eyebrow">Section 04 — Action Required</span>
+  <div class="section-title">Flags, Duplicates & Questions</div>
+  <div class="section-desc">Items that need Grant's attention — potential duplicate charges, inflated recurring expenses, and subscriptions worth reviewing. Most of these are 10-minute fixes.</div>
+
+  <div class="flag-grid">
+    <div class="flag red">
+      <div class="flag-icon">🚨</div>
+      <div>
+        <h4>AG1 — Possible Duplicate Billing</h4>
+        <p>Personal account: <strong>$1,030.</strong> Business account: <strong>$687.</strong> Combined: <strong>$1,717 over 2 years ($858/yr).</strong> Could be two subscriptions or one incorrectly split. One call to AG1 to verify.</p>
+      </div>
+    </div>
+    <div class="flag red">
+      <div class="flag-icon">🚨</div>
+      <div>
+        <h4>Doordash — Both Accounts</h4>
+        <p>Personal: <strong>$2,561.</strong> Business: <strong>$2,526.</strong> Total: <strong>$5,087 over 2 years ($2,543/yr).</strong> Two separate accounts? Or one account expensed to both? Worth clarifying and considering whether DashPass is active on both.</p>
+      </div>
+    </div>
+    <div class="flag red">
+      <div class="flag-icon">🚨</div>
+      <div>
+        <h4>Sirius XM — Both Accounts</h4>
+        <p>Personal: <strong>$230.</strong> Business: <strong>$146.</strong> Combined: <strong>$376 over 2 years.</strong> Likely two vehicle subscriptions. Confirm both cars actively use it — cancel one if a vehicle is rarely driven.</p>
+      </div>
+    </div>
+    <div class="flag gold">
+      <div class="flag-icon">⚠️</div>
+      <div>
+        <h4>Disney — Both Accounts</h4>
+        <p>Personal: <strong>$2,565.</strong> Business: <strong>$551.</strong> Total: <strong>$3,116 over 2 years.</strong> Mix of streaming + park visits. Confirm personal Disney+ is not duplicated with a business subscription.</p>
+      </div>
+    </div>
+    <div class="flag gold">
+      <div class="flag-icon">⚠️</div>
+      <div>
+        <h4>Miro.com — $1,999 Over 2 Years</h4>
+        <p>$83/month business plan. Miro is a whiteboard collaboration tool. <strong>If not actively used for team work, the free tier covers individual use.</strong> Could save $600–$1,000/year with a plan downgrade.</p>
+      </div>
+    </div>
+    <div class="flag gold">
+      <div class="flag-icon">⚠️</div>
+      <div>
+        <h4>Bay Club — $23,800 Combined</h4>
+        <p>Personal: $22,343 ($931/mo). Business: $1,458 (separate location). <strong>The largest personal recurring expense.</strong> Not flagging for cancellation — but confirm the current tier is optimized and all available perks are being used.</p>
+      </div>
+    </div>
+    <div class="flag blue">
+      <div class="flag-icon">🔍</div>
+      <div>
+        <h4>Starlink — $21 Total (Minimal Usage)</h4>
+        <p>Nearly zero spend — likely a trial or one-off charge. <strong>Confirm whether this subscription is still active.</strong> If not in use, cancel to prevent future charges from starting.</p>
+      </div>
+    </div>
+    <div class="flag blue">
+      <div class="flag-icon">🔍</div>
+      <div>
+        <h4>Apple — $2,129 Personal</h4>
+        <p>Mix of hardware and recurring subscriptions (iCloud, Apple TV+, Apple One). <strong>Hard to isolate without transaction detail.</strong> Worth reviewing the Apple subscriptions page to confirm nothing unwanted is running.</p>
+      </div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- RECOMMENDATIONS -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<div class="section" id="recommendations">
+<div class="content">
+
+  <span class="eyebrow">Section 05 — The Action Plan</span>
+  <div class="section-title">Ranked Recommendations</div>
+  <div class="section-desc">Every recommendation below is ranked by annual savings impact. Start at the top and work down — the first two items alone could save over $8,000/year.</div>
+
+  <div class="rec-list">
+
+    <div class="rec priority-high">
+      <div class="rec-num">1</div>
+      <div class="rec-body">
+        <h4>Get Fora Travel Agent Certification</h4>
+        <p>Sign up at foratravel.com for $299/year. This unlocks 20–35% off at Marriott, Hilton, Hyatt, Rosewood, and 100,000+ hotels worldwide — the exact properties Grant already books. Daniel can handle the entire setup including California Seller of Travel registration (~$200 one-time fee). From the first hotel booking, the card pays for itself.</p>
+        <div class="rec-tags">
+          <span class="rec-tag tag-action">Action: Daniel signs up</span>
+          <span class="rec-tag tag-easy">Easy — 30 mins setup</span>
+          <span class="rec-tag tag-savings">ROI: 25–37x</span>
+        </div>
+      </div>
+      <div class="rec-save"><span class="sv">$7,279–$11,165</span><span class="sl">Per Year</span></div>
+    </div>
+
+    <div class="rec priority-high">
+      <div class="rec-num">2</div>
+      <div class="rec-body">
+        <h4>Resolve AG1 Duplicate — Call AG1 Today</h4>
+        <p>Athletic Greens is being charged to both personal ($43/mo) and business ($29/mo) accounts. Combined $858/year. One 10-minute call to AG1 customer service to confirm whether this is intentional. If it's one subscription on two cards, cancelling the duplicate saves $858/year with no lifestyle change.</p>
+        <div class="rec-tags">
+          <span class="rec-tag tag-flag">Possible Duplicate</span>
+          <span class="rec-tag tag-easy">10-minute fix</span>
+        </div>
+      </div>
+      <div class="rec-save"><span class="sv">Up to $858</span><span class="sl">Per Year</span></div>
+    </div>
+
+    <div class="rec priority-med">
+      <div class="rec-num">3</div>
+      <div class="rec-body">
+        <h4>Audit Miro.com — Downgrade If Inactive</h4>
+        <p>$83/month for a collaborative whiteboard tool. The free Miro plan supports unlimited personal boards with no time limit. If this isn't being actively used for team collaboration, a downgrade takes 5 minutes online and saves up to $1,000/year immediately.</p>
+        <div class="rec-tags">
+          <span class="rec-tag tag-action">Check usage first</span>
+          <span class="rec-tag tag-savings">Free tier available</span>
+        </div>
+      </div>
+      <div class="rec-save"><span class="sv">$600–$1,000</span><span class="sl">Per Year</span></div>
+    </div>
+
+    <div class="rec priority-med">
+      <div class="rec-num">4</div>
+      <div class="rec-body">
+        <h4>Consolidate Rideshare — Add Uber One + Lyft Pink</h4>
+        <p>At $4,407/year in rideshare spending, both Uber One ($120/yr) and Lyft Pink ($199/yr) deliver positive ROI. Net combined benefit after subscription costs: ~$144/year. Additionally, routing Bay Area rides through Waymo (already in data at lower rates) could reduce the overall bill by 10–15%.</p>
+        <div class="rec-tags">
+          <span class="rec-tag tag-action">Add subscriptions online</span>
+          <span class="rec-tag tag-easy">10 mins total</span>
+        </div>
+      </div>
+      <div class="rec-save"><span class="sv">$144–$660</span><span class="sl">Per Year</span></div>
+    </div>
+
+    <div class="rec priority-med">
+      <div class="rec-num">5</div>
+      <div class="rec-body">
+        <h4>Clarify Doordash Across Both Accounts</h4>
+        <p>$5,087 combined over 2 years on Doordash. Confirm whether two separate accounts/DashPass subscriptions are active across personal and business. If one DashPass can cover both, cancelling the duplicate saves $96–$120/year on subscription fees alone, plus the overall delivery frequency is worth reviewing.</p>
+        <div class="rec-tags">
+          <span class="rec-tag tag-flag">Possible Duplicate</span>
+          <span class="rec-tag tag-easy">5-minute check</span>
+        </div>
+      </div>
+      <div class="rec-save"><span class="sv">$96–$500</span><span class="sl">Per Year</span></div>
+    </div>
+
+    <div class="rec priority-low">
+      <div class="rec-num">6</div>
+      <div class="rec-body">
+        <h4>Confirm Sirius XM Dual Subscriptions</h4>
+        <p>$376 combined over 2 years across personal and business accounts. Confirm both vehicle subscriptions are actively used. If one vehicle is parked frequently or rarely driven, cancelling that Sirius subscription is a simple phone call saving $145–$230/year.</p>
+        <div class="rec-tags">
+          <span class="rec-tag tag-flag">Verify usage</span>
+          <span class="rec-tag tag-easy">One call</span>
+        </div>
+      </div>
+      <div class="rec-save"><span class="sv">$145–$230</span><span class="sl">Per Year</span></div>
+    </div>
+
+    <div class="rec priority-low">
+      <div class="rec-num">7</div>
+      <div class="rec-body">
+        <h4>Review Bay Club Membership Tier</h4>
+        <p>The largest personal recurring expense at $931/month ($11,171/year). Not recommending cancellation — the Bay Club is clearly a valued family investment. However, worth a 15-minute conversation with Bay Club to confirm the current membership tier is optimal and all perks (guest passes, classes, facilities) are being actively used to maximize value at this price point.</p>
+        <div class="rec-tags">
+          <span class="rec-tag tag-action">Schedule review call</span>
+        </div>
+      </div>
+      <div class="rec-save"><span class="sv">TBD</span><span class="sl">Worth Reviewing</span></div>
+    </div>
+
+    <div class="rec priority-low">
+      <div class="rec-num">8</div>
+      <div class="rec-body">
+        <h4>Cancel or Confirm Starlink Subscription</h4>
+        <p>Only $21.85 in the data — likely a pilot or one-time charge. However, Starlink subscriptions are $120–$250/month if they kick in fully. Confirm whether this is active and intentional before the next billing cycle triggers a larger charge.</p>
+        <div class="rec-tags">
+          <span class="rec-tag tag-flag">Verify before next bill</span>
+          <span class="rec-tag tag-easy">2-minute check</span>
+        </div>
+      </div>
+      <div class="rec-save"><span class="sv">$120–$250</span><span class="sl">If Active/Month</span></div>
+    </div>
+
+  </div>
+
+  <!-- VERDICT -->
+  <div class="verdict">
+    <div class="verdict-eyebrow">The Bottom Line</div>
+    <h3>Implement All 8 Recommendations:<br><em>Save $18,000–$25,000/Year</em></h3>
+    <p>Grant spends approximately $102,295/year across travel, subscriptions, and recurring charges. The recommendations above — led by the travel agent certification and duplicate subscription fixes — could reduce that by $18,000–$25,000 annually. The biggest single move costs $299. Every other recommendation is free or takes less than an hour to action.</p>
+    <div class="verdict-boxes">
+      <div class="vbox"><span class="vv">$7,279–$11,165</span><span class="vl">Travel Agent</span></div>
+      <div class="vbox"><span class="vv">$858</span><span class="vl">AG1 Duplicate</span></div>
+      <div class="vbox"><span class="vv">$600–$1,000</span><span class="vl">Miro Audit</span></div>
+      <div class="vbox"><span class="vv">$144–$660</span><span class="vl">Rideshare</span></div>
+      <div class="vbox"><span class="vv">$500–$2,000</span><span class="vl">Other Duplicates</span></div>
+      <div class="vbox"><span class="vv">$18K–$25K</span><span class="vl">Total/Year</span></div>
+    </div>
+  </div>
+
+</div>
+</div>
+
+<script>
+function show(id, btn) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('visible'));
+  document.querySelectorAll('.nav-btn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('visible');
+  btn.classList.add('active');
+  window.scrollTo({ top: 0, behavior: 'smooth' });
+}
+</script>
+</body>
+</html>
